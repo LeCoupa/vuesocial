@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="42px" viewBox="0 0 48 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>drive_black</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Black" transform="translate(-601.000000, -955.000000)" fill="#000000">
+            <g id="drive" transform="translate(601.000000, 955.000000)">
+                <path d="M32.0004806,28 L48,28 L39.9998798,42 L10.2201999,42 L18.3492321,28 L32.0004806,28 Z M30.8575806,26 L26.2252764,17.8937721 L26.2645676,17.8712888 L25.7679099,17.0033423 L16.0382311,8.8817842e-16 L32.0004806,0 L46.8571772,26 L30.8575806,26 Z M16.0365291,28 L13.754586,31.930013 L16.0002403,28 L16.0365291,28 Z M7.95435928,41.9192925 L-1.77635684e-15,28 L14.8677006,1.98132863 L22.8733203,15.9717487 L16.0002403,28 L13.7383266,31.9580153 L7.95435928,41.9192925 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
