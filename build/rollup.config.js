@@ -38,11 +38,16 @@ const baseConfig = {
 
 // ESM/UMD/IIFE shared settings: externals
 // Refer to https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
-const external = []
+const external = [
+  // list external dependencies, exactly the way it is written in the import statement.
+  "@growthbunker/vuedarkmode"
+]
 
 // UMD/IIFE shared settings: output.globals
 // Refer to https://rollupjs.org/guide/en#output-globals for details
-const globals = {}
+const globals = {
+  "@growthbunker/vuedarkmode": "VueDarkMode"
+}
 
 // Customize configs for individual targets
 const buildFormats = []

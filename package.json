@@ -40,7 +40,8 @@
     "lint:scss": "stylelint '**/*.scss'; stylelint '**/*.vue' --syntax scss; exit 0;"
   },
   "dependencies": {
-    "@growthbunker/stylesheets": "0.1.17"
+    "@growthbunker/stylesheets": "0.1.17",
+    "@growthbunker/vuedarkmode": "0.5.2"
   },
   "devDependencies": {
     "autoprefixer": "9.6.1",
