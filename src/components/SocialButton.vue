@@ -43,10 +43,15 @@ button(
 // NPM
 import { BaseSpinner } from "@growthbunker/vuedarkmode"
 
+// PROJECT: MIXINS
+import ThemeMixin from "../mixins/ThemeMixin.js"
+
 export default {
   components: {
     BaseSpinner
   },
+
+  mixins: [ThemeMixin],
 
   props: {
     disabled: {

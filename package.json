@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "author": "Growth Bunker <product@growthbunker.com>",
   "license": "MIT",
-  "description": "One social button to rule them all : authentication, share or other creative tactics.",
+  "description": "One social button component to rule them all.",
   "keywords": [
     "vue",
     "components",
