@@ -13,6 +13,7 @@ button(
       "gb-social-button--disabled": disabled || loading,
       "gb-social-button--full-width": fullWidth,
       "gb-social-button--loading": loading,
+      "gb-social-button--not-reverse": !reverse,
       "gb-social-button--reverse": reverse
     }
   ]`
@@ -214,7 +215,6 @@ export default {
 // VARIABLES
 $c: ".gb-social-button";
 $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
-
 $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance", "bitly",
   "blackberry", "blogger", "buffer", "chrome", "codepen", "dailymotion", "dribbble", "drive",
   "dropbox", "envato", "evernote", "facebook", "fancy", "feedly", "firefox", "flickr", "foursquare",
@@ -228,9 +228,9 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
 #{$c} {
   display: inline-block;
   outline: 0;
-  background-position: center;
   border-width: 1px;
   border-style: solid;
+  background-position: center;
   font-family: "Heebo", "Helvetica Neue", Source Sans Pro, Helvetica, Arial, sans-serif;
   transition: all 250ms linear;
   user-select: none;
@@ -278,20 +278,52 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
   // --> THEMES <--
 
   @each $theme in $themes {
-    &--#{map-get($theme, "name")} {
-      color: mdg($theme, "colors", "black");
+    $themeName: map-get($theme, "name");
+
+    &--#{$themeName} {
       box-shadow: 0 1px 5px 0 mdg($theme, "box-shadows", "default", "primary");
 
-      // Reverse buttons have their own defined style (see below)
-      &:not(#{$c}--reverse) {
+      &#{$c}--not-reverse {
         border-color: mdg($theme, "borders", "default", "primary");
         background-color: mdg($theme, "colors", "white");
+        color: mdg($theme, "colors", "black");
+
+        &:focus {
+          @if ($themeName == "dark") {
+            box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
+              0 0 0 3px mdg($theme, "borders", "reverse", "primary");
+          } @else {
+            box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
+              0 0 0 3px mdg($theme, "borders", "default", "primary");
+          }
+        }
       }
 
       &#{$c}--reverse {
-        color: mdg($theme, "fonts", "default", "primary");
         border-color: mdg($theme, "borders", "reverse", "primary");
         background-color: transparent;
+        color: mdg($theme, "fonts", "default", "primary");
+
+        &:hover {
+          background-color: mdg($theme, "backgrounds", "default", "primary");
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
+            0 0 0 3px mdg($theme, "borders", "reverse", "primary");
+        }
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0px);
+      }
+
+      &:focus {
+        transform: translateY(0px);
       }
     }
   }
