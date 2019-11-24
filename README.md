@@ -1,6 +1,6 @@
 <p align="center" style="background: #1b2431; padding: 20px 0;">
   <a href="https://www.growthbunker.dev/vuesocial" target="_blank">
-    <img width="100%" src="https://raw.githubusercontent.com/growthbunker/vuesocial/master/src/images/vuesocial.jpg">
+    <img width="100%" src="https://raw.githubusercontent.com/growthbunker/vuesocial/master/src/vuesocial_dark.jpg">
   </a>
 </p>
 
@@ -66,13 +66,24 @@ Get the latest version from [jsdelivr](https://www.jsdelivr.com/), and import th
 
 We recommend our users to lock Vue Social's version when using CDN. Requesting the latest version (as opposed to "latest major" or "latest minor") is dangerous because major versions usually come with breaking changes. Only do this if you really know what you are doing. [Please refer to jsdelivr.com](https://www.jsdelivr.com/features) for more information.
 
+## Icons
+
+<a href="https://github.com/growthbunker/vuesocial/tree/master/assets/networks" target="_blank">All the icons are available here</a> in three themes (color, black and white). Copy them somewhere in your somewhere in your "public" / "static" folder. You will also have to set the icon path for the component to be able to find them (see package options and component props).
+
+A huge thank you to <a href="https://github.com/growthbunker/vuesocial/tree/master/assets/networks" target="_blank">Alexis Doreau</a> for designing them.
+
 ## Example
 
 Once the plugin is installed, you can use the component like this:
 
 ```html
 <template>
-  <gb-social-button />
+  <gb-social-button
+    label="Do something with Facebook"
+    network="facebook"
+    size="small"
+    theme="light"
+  />
 </template>
 ```
 
