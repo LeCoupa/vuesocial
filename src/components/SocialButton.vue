@@ -7,13 +7,13 @@ button(
   @click="onClick"
   :class=`[
     "gb-social-button",
-    "gb-social-button--" + network,
     "gb-social-button--" + size,
     "gb-social-button--" + computedTheme,
     {
       "gb-social-button--disabled": disabled || loading,
       "gb-social-button--full-width": fullWidth,
-      "gb-social-button--loading": loading
+      "gb-social-button--loading": loading,
+      "gb-social-button--reverse": reverse
     }
   ]`
   :disabled="disabled || loading"
@@ -29,10 +29,16 @@ button(
     template(
       v-if="!loading"
     )
-      span.gb-social-button__icon
+      img(
+        :src="logo"
+        class="gb-social-button__logo"
+      )
 
-      span.gb-social-button__label
-        slot
+      span(
+        v-if="label"
+        v-html="label"
+        class="gb-social-button__label"
+      )
 </template>
 
 <!-- *************************************************************************
@@ -54,6 +60,17 @@ export default {
   mixins: [ThemeMixin],
 
   props: {
+    iconPath: {
+      type: String,
+      required: true
+    },
+    iconTheme: {
+      type: String,
+      default: "color",
+      validator(x) {
+        return ["black", "color", "white"].includes(x)
+      }
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -61,6 +78,10 @@ export default {
     fullWidth: {
       type: Boolean,
       default: false
+    },
+    label: {
+      type: String,
+      default: null
     },
     loading: {
       type: Boolean,
@@ -70,8 +91,83 @@ export default {
       type: String,
       required: true,
       validator(x) {
-        return ["facebook", "google", "messenger", "shopify", "twitter"].includes(x)
+        return [
+          "500px",
+          "airbnb",
+          "amazon",
+          "android",
+          "apple",
+          "bankin",
+          "behance",
+          "bitly",
+          "blackberry",
+          "blogger",
+          "buffer",
+          "chrome",
+          "codepen",
+          "dailymotion",
+          "dribbble",
+          "drive",
+          "dropbox",
+          "envato",
+          "evernote",
+          "facebook",
+          "fancy",
+          "feedly",
+          "firefox",
+          "flickr",
+          "foursquare",
+          "github",
+          "google",
+          "googleplus",
+          "hanghout",
+          "instagram",
+          "internetexplorer",
+          "invision",
+          "linkedin",
+          "magento",
+          "medium",
+          "messenger",
+          "opera",
+          "paypal",
+          "periscope",
+          "photoshop",
+          "pinterest",
+          "pocket",
+          "principle",
+          "producthunt",
+          "rdio",
+          "reddit",
+          "rss",
+          "safari",
+          "scoopit",
+          "shopify",
+          "sketch",
+          "skype",
+          "slack",
+          "snapchat",
+          "soundcloud",
+          "spotify",
+          "stackoverflow",
+          "tinder",
+          "trello",
+          "tumblr",
+          "twitter",
+          "viadeo",
+          "viber",
+          "vimeo",
+          "vine",
+          "whatsapp",
+          "windowsphone",
+          "wordpress",
+          "yelp",
+          "youtube"
+        ].includes(x)
       }
+    },
+    reverse: {
+      type: Boolean,
+      default: false
     },
     size: {
       type: String,
@@ -79,6 +175,15 @@ export default {
       validator(x) {
         return ["nano", "micro", "mini", "small", "default", "medium", "large"].includes(x)
       }
+    }
+  },
+
+  computed: {
+    logo() {
+      // Remove last character if slash
+      const path = this.iconPath.replace(/\/$/, "")
+
+      return `${path}/${this.network}_${this.iconTheme}.svg`
     }
   },
 
@@ -106,16 +211,24 @@ export default {
 
 // VARIABLES
 $c: ".gb-social-button";
-$networks: "facebook", "google", "messenger", "shopify", "twitter";
 $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
+
+$networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance", "bitly",
+  "blackberry", "blogger", "buffer", "chrome", "codepen", "dailymotion", "dribbble", "drive",
+  "dropbox", "envato", "evernote", "facebook", "fancy", "feedly", "firefox", "flickr", "foursquare",
+  "github", "google", "googleplus", "hanghout", "instagram", "internetexplorer", "invision",
+  "linkedin", "magento", "medium", "messenger", "opera", "paypal", "periscope", "photoshop",
+  "pinterest", "pocket", "principle", "producthunt", "rdio", "reddit", "rss", "safari", "scoopit",
+  "shopify", "sketch", "skype", "slack", "snapchat", "soundcloud", "spotify", "stackoverflow",
+  "tinder", "trello", "tumblr", "twitter", "viadeo", "viber", "vimeo", "vine", "whatsapp",
+  "windowsphone", "wordpress", "yelp", "youtube";
 
 #{$c} {
   display: inline-block;
   outline: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   background-position: center;
-  box-shadow: inset -1px 1px 0 0 rgba(255, 255, 255, 0);
-  color: mdg($dark, "colors", "white");
+  border-width: 1px;
+  border-style: solid;
   font-family: "Heebo", "Helvetica Neue", Source Sans Pro, Helvetica, Arial, sans-serif;
   transition: all 250ms linear;
   user-select: none;
@@ -126,43 +239,13 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
     align-items: center;
     justify-content: center;
 
-    #{$c}__icon {
+    #{$c}__logo {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-repeat: no-repeat;
     }
 
     #{$c}__label {
       margin-left: 6px;
       font-weight: 500;
-    }
-  }
-
-  // --> NETWORKS <--
-
-  @each $network in $networks {
-    &--#{$network} {
-      background: map-get($socialColors, $network)
-        radial-gradient(circle, transparent 1%, map-get($socialColors, $network) 1%)
-        center/15000%;
-
-      &:hover {
-        &:not(#{$c}--disabled) {
-          background-color: lighten(map-get($socialColors, $network), 10%);
-        }
-      }
-
-      &:active {
-        &:not(#{$c}--disabled) {
-          background-color: lighten(map-get($socialColors, $network), 10%);
-        }
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 2px mdg($dark, "backgrounds", "default", "primary"),
-          0 0 0 3px map-get($socialColors, $network);
-      }
     }
   }
 
@@ -176,6 +259,38 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
       border-radius: 2px + (1px * $i);
       font-size: 10px + (1px * $i);
       line-height: 8px + (2px * $i);
+
+      #{$c}__inner {
+        #{$c}__logo {
+          width: 10px + (2px * $i);
+          height: 10px + (2px * $i);
+        }
+
+        #{$c}__label {
+          margin-left: 2px + (1px * $i);
+        }
+      }
+    }
+  }
+
+  // --> THEMES <--
+
+  @each $theme in $themes {
+    &--#{map-get($theme, "name")} {
+      color: mdg($theme, "colors", "black");
+      box-shadow: 0 1px 5px 0 mdg($theme, "box-shadows", "default", "primary");
+
+      // Reverse buttons have their own defined style (see below)
+      &:not(#{$c}--reverse) {
+        border-color: mdg($theme, "borders", "default", "primary");
+        background-color: mdg($theme, "colors", "white");
+      }
+
+      &#{$c}--reverse {
+        color: mdg($theme, "fonts", "default", "primary");
+        border-color: mdg($theme, "borders", "reverse", "primary");
+        background-color: transparent;
+      }
     }
   }
 
