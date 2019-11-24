@@ -21,25 +21,23 @@ button(
   type="button"
 )
   span.gb-social-button__inner
-    base-spinner(
-      v-if="loading"
-      color="white"
-      size="mini"
+    img(
+      :src="logo"
+      class="gb-social-button__logo"
     )
 
-    template(
-      v-if="!loading"
+    span(
+      v-if="label"
+      v-html="label"
+      class="gb-social-button__label"
     )
-      img(
-        :src="logo"
-        class="gb-social-button__logo"
-      )
 
-      span(
-        v-if="label"
-        v-html="label"
-        class="gb-social-button__label"
-      )
+  base-spinner(
+    v-if="loading"
+    :size="spinnerSize"
+    class="gb-social-button__spinner"
+    color="black"
+  )
 </template>
 
 <!-- *************************************************************************
@@ -187,7 +185,17 @@ export default {
       path = path.replace(/\/$/, "")
 
       return `${path}/${this.network}_${this.iconTheme}.svg`
-    }
+    },
+
+    spinnerSize() {
+      if (["nano", "micro"].includes(this.size)) {
+        return "nano"
+      } else if (["mini" ,"small", "default"].includes(this.size)) {
+        return "mini"
+      }
+
+      return "default"
+    },
   },
 
   methods: {
@@ -341,6 +349,23 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
 
   &--full-width {
     width: 100%;
+  }
+
+  &--loading {
+    position: relative;
+    opacity: 1;
+    cursor: wait;
+
+    #{$c}__inner {
+      opacity: 0;
+    }
+
+    #{$c}__spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   // --> INTERACTIONS <--
