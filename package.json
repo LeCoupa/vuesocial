@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@growthbunker/vuesocial",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Growth Bunker <product@growthbunker.com>",
   "license": "MIT",
   "description": "One social button component to rule them all.",
