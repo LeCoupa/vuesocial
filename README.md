@@ -1,6 +1,6 @@
 <p align="center" style="background: #1b2431; padding: 20px 0;">
   <a href="https://www.growthbunker.dev/vuesocial" target="_blank">
-    <img width="100%" src="https://raw.githubusercontent.com/growthbunker/vuesocial/master/src/vuesocial_dark.jpg">
+    <img width="100%" src="https://raw.githubusercontent.com/growthbunker/vuesocial/master/vuesocial_dark.jpg">
   </a>
 </p>
 
