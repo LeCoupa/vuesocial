@@ -17,7 +17,7 @@ button(
       "gb-social-button--reverse": reverse
     }
   ]`
-  :disabled="disabled || loading"
+  :disabled="disabled"
   type="button"
 )
   span.gb-social-button__inner
