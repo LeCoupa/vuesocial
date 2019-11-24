@@ -62,7 +62,7 @@ export default {
   props: {
     iconPath: {
       type: String,
-      required: true
+      default: null
     },
     iconTheme: {
       type: String,
@@ -180,8 +180,10 @@ export default {
 
   computed: {
     logo() {
+      let path = this.$gb.vuesocial.iconPath || this.iconPath || ""
+
       // Remove last character if slash
-      const path = this.iconPath.replace(/\/$/, "")
+      path = path.replace(/\/$/, "")
 
       return `${path}/${this.network}_${this.iconTheme}.svg`
     }

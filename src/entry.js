@@ -26,6 +26,7 @@ function install(Vue, options) {
   }
 
   Vue.prototype.$gb.vuesocial = {}
+  Vue.prototype.$gb.vuesocial.iconPath = (options || {}).iconPath || null
   Vue.prototype.$gb.vuesocial.theme = (options || {}).theme || "dark"
 }
 
