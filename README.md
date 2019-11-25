@@ -70,7 +70,7 @@ We recommend our users to lock Vue Social's version when using CDN. Requesting t
 
 <a href="https://github.com/growthbunker/vuesocial/tree/master/assets/networks" target="_blank">All the icons are available here</a> in three themes (color, black and white). Copy them somewhere in your somewhere in your "public" / "static" folder. You will also have to set the icon path for the component to be able to find them (see package options and component props).
 
-A huge thank you to <a href="https://github.com/growthbunker/vuesocial/tree/master/assets/networks" target="_blank">Alexis Doreau</a> for designing them.
+A huge thank you to <a href="https://alexisdoreau.com/freebies_gift_download/" target="_blank">Alexis Doreau</a> for designing them.
 
 ## Example
 
