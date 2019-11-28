@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@growthbunker/vuesocial",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Growth Bunker <product@growthbunker.com>",
   "license": "MIT",
   "description": "One easy-to-use button component with 65+ social networks.",
@@ -43,7 +43,7 @@
     "@growthbunker/vuedarkmode": "0.5.2"
   },
   "devDependencies": {
-    "@growthbunker/stylesheets": "0.1.17",
+    "@growthbunker/stylesheets": "0.2.1",
     "autoprefixer": "9.6.1",
     "cross-env": "6.0.3",
     "minimist": "1.2.0",
