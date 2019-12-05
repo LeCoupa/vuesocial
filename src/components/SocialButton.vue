@@ -312,8 +312,6 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
     $themeName: map-get($theme, "name");
 
     &--#{$themeName} {
-      box-shadow: 0 1px 5px 0 mdg($theme, "box-shadows", "default", "primary");
-
       &#{$c}--not-reverse {
         border-color: mdg($theme, "borders", "default", "primary");
         background-color: mdg($theme, "colors", "white");
