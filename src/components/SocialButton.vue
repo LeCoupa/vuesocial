@@ -20,6 +20,8 @@ button(
   :disabled="disabled"
   type="button"
 )
+  span.gb-social-button__focuser
+
   span.gb-social-button__inner
     img(
       :src="logo"
@@ -189,12 +191,12 @@ export default {
     spinnerSize() {
       if (["nano", "micro"].includes(this.size)) {
         return "nano"
-      } else if (["mini" ,"small", "default"].includes(this.size)) {
+      } else if (["mini", "small", "default"].includes(this.size)) {
         return "mini"
       }
 
       return "default"
-    },
+    }
   },
 
   methods: {
@@ -225,14 +227,15 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
 $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance", "bitly",
   "blackberry", "blogger", "buffer", "chrome", "codepen", "dailymotion", "dribbble", "drive",
   "dropbox", "envato", "evernote", "facebook", "fancy", "feedly", "firefox", "flickr", "foursquare",
-  "github", "google", "hangout", "instagram", "internetexplorer", "invision",
-  "linkedin", "magento", "medium", "messenger", "opera", "paypal", "periscope", "photoshop",
-  "pinterest", "pocket", "principle", "producthunt", "rdio", "reddit", "rss", "safari", "scoopit",
-  "shopify", "sketch", "skype", "slack", "snapchat", "soundcloud", "spotify", "stackoverflow",
-  "tinder", "trello", "tumblr", "twitter", "viadeo", "viber", "vimeo", "vine", "whatsapp",
-  "windowsphone", "wordpress", "yelp", "youtube";
+  "github", "google", "hangout", "instagram", "internetexplorer", "invision", "linkedin", "magento",
+  "medium", "messenger", "opera", "paypal", "periscope", "photoshop", "pinterest", "pocket",
+  "principle", "producthunt", "rdio", "reddit", "rss", "safari", "scoopit", "shopify", "sketch",
+  "skype", "slack", "snapchat", "soundcloud", "spotify", "stackoverflow", "tinder", "trello",
+  "tumblr", "twitter", "viadeo", "viber", "vimeo", "vine", "whatsapp", "windowsphone", "wordpress",
+  "yelp", "youtube";
 
 #{$c} {
+  position: relative;
   display: inline-block;
   outline: 0;
   border-width: 1px;
@@ -242,6 +245,18 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
   transition: all 250ms linear;
   user-select: none;
   cursor: pointer;
+
+  #{$c}__focuser {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    border-width: 1px;
+    border-style: solid;
+    opacity: 0;
+    transition: all linear 250ms;
+  }
 
   #{$c}__inner {
     display: flex;
@@ -269,6 +284,10 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
       font-size: 10px + (1px * $i);
       line-height: 8px + (2px * $i);
 
+      #{$c}__focuser {
+        border-radius: 4px + (1px * $i);
+      }
+
       #{$c}__inner {
         #{$c}__logo {
           width: 10px + (2px * $i);
@@ -295,13 +314,11 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
         background-color: mdg($theme, "colors", "white");
         color: mdg($theme, "colors", "black");
 
-        &:focus {
+        #{$c}__focuser {
           @if ($themeName == "dark") {
-            box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
-              0 0 0 3px mdg($theme, "borders", "reverse", "primary");
+            border-color: mdg($theme, "borders", "reverse", "primary");
           } @else {
-            box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
-              0 0 0 3px mdg($theme, "borders", "default", "primary");
+            border-color: mdg($theme, "borders", "default", "primary");
           }
         }
       }
@@ -315,9 +332,8 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
           background-color: mdg($theme, "backgrounds", "default", "primary");
         }
 
-        &:focus {
-          box-shadow: 0 0 0 2px mdg($theme, "backgrounds", "default", "primary"),
-            0 0 0 3px mdg($theme, "borders", "reverse", "primary");
+        #{$c}__focuser {
+          border-color: mdg($theme, "borders", "reverse", "primary");
         }
       }
 
@@ -375,7 +391,10 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
   }
 
   &:focus {
-    transition: box-shadow linear 250ms;
+    #{$c}__focuser {
+      opacity: 1;
+    }
   }
 }
+
 </style>
