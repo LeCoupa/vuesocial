@@ -14,7 +14,8 @@ button(
       "gb-social-button--full-width": fullWidth,
       "gb-social-button--loading": loading,
       "gb-social-button--not-reverse": !reverse,
-      "gb-social-button--reverse": reverse
+      "gb-social-button--reverse": reverse,
+      "gb-social-button--rounded": rounded
     }
   ]`
   :disabled="disabled"
@@ -166,6 +167,10 @@ export default {
       }
     },
     reverse: {
+      type: Boolean,
+      default: false
+    },
+    rounded: {
       type: Boolean,
       default: false
     },
@@ -380,6 +385,14 @@ $networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance",
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+  }
+
+  &--rounded {
+    border-radius: 100px;
+
+    #{$c}__focuser {
+      border-radius: 100px;
     }
   }
 
