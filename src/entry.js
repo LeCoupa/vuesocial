@@ -20,7 +20,6 @@ function install(Vue, options) {
   // Declare the component
   Vue.component("gb-social-button", SocialButton)
 
-  // Configure the theme to use (dark will always be the default theme)
   if (!Vue.prototype.$gb) {
     Vue.prototype.$gb = {}
   }
