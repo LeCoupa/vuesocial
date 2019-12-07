@@ -20,10 +20,12 @@ function install(Vue, options) {
   // Declare the component
   Vue.component("gb-social-button", SocialButton)
 
+  // Create growthbunker namespace
   if (!Vue.prototype.$gb) {
     Vue.prototype.$gb = {}
   }
 
+  // Set global options for the package
   Vue.prototype.$gb.vuesocial = {}
   Vue.prototype.$gb.vuesocial.iconPath = (options || {}).iconPath || null
   Vue.prototype.$gb.vuesocial.theme = (options || {}).theme || "dark"
