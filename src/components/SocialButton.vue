@@ -229,15 +229,6 @@ export default {
 // VARIABLES
 $c: ".gb-social-button";
 $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
-$networks: "500px", "airbnb", "amazon", "android", "apple", "bankin", "behance", "bitly",
-  "blackberry", "blogger", "buffer", "chrome", "codepen", "dailymotion", "dribbble", "drive",
-  "dropbox", "envato", "evernote", "facebook", "fancy", "feedly", "firefox", "flickr", "foursquare",
-  "github", "google", "hangout", "instagram", "internetexplorer", "invision", "linkedin", "magento",
-  "medium", "messenger", "opera", "paypal", "periscope", "photoshop", "pinterest", "pocket",
-  "principle", "producthunt", "rdio", "reddit", "rss", "safari", "scoopit", "shopify", "sketch",
-  "skype", "slack", "snapchat", "soundcloud", "spotify", "stackoverflow", "tinder", "trello",
-  "tumblr", "twitter", "viadeo", "viber", "vimeo", "vine", "whatsapp", "windowsphone", "wordpress",
-  "yelp", "youtube";
 
 #{$c} {
   position: relative;
