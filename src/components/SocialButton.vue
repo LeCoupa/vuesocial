@@ -322,12 +322,14 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
         background-color: transparent;
         color: mdg($theme, "fonts", "default", "primary");
 
-        &:hover {
-          background-color: mdg($theme, "backgrounds", "default", "primary");
-        }
-
         #{$c}__focuser {
           border-color: mdg($theme, "borders", "reverse", "primary");
+        }
+
+        &:hover {
+          &:not(#{$c}--disabled) {
+            background-color: mdg($theme, "backgrounds", "default", "primary");
+          }
         }
       }
     }
@@ -376,20 +378,26 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
   // --> INTERACTIONS <--
 
   &:hover {
-    transform: translateY(-1px);
+    &:not(#{$c}--disabled) {
+      transform: translateY(-1px);
+    }
   }
 
   &:active {
-    background-size: 100%;
-    transition: background 0s;
-    transform: translateY(0px);
+    &:not(#{$c}--disabled) {
+      background-size: 100%;
+      transition: background 0s;
+      transform: translateY(0px);
+    }
   }
 
   &:focus {
-    transform: translateY(0px);
+    &:not(#{$c}--disabled) {
+      transform: translateY(0px);
 
-    #{$c}__focuser {
-      opacity: 1;
+      #{$c}__focuser {
+        opacity: 1;
+      }
     }
   }
 }
