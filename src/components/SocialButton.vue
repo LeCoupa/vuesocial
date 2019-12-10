@@ -30,10 +30,10 @@ button(
     )
 
     span(
-      v-if="label"
-      v-html="label"
+      v-if="$slots.default && $slots.default[0].text.trim()"
       class="gb-social-button__label"
     )
+      slot
 
   base-spinner(
     v-if="loading"
@@ -80,10 +80,6 @@ export default {
     fullWidth: {
       type: Boolean,
       default: false
-    },
-    label: {
-      type: String,
-      default: null
     },
     loading: {
       type: Boolean,

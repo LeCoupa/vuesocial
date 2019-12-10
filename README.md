@@ -78,12 +78,9 @@ Once the plugin is installed, you can use the component like this:
 
 ```html
 <template>
-  <gb-social-button
-    label="Do something with Facebook"
-    network="facebook"
-    size="small"
-    theme="light"
-  />
+  <gb-social-button network="facebook" size="small" theme="light">
+    Do something with Facebook
+  </gb-social-button>
 </template>
 ```
 
