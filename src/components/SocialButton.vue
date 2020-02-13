@@ -321,12 +321,6 @@ $sizes: "nano", "micro", "mini", "small", "default", "medium", "large";
         #{$c}__focuser {
           border-color: mdg($theme, "borders", "reverse", "primary");
         }
-
-        &:hover {
-          &:not(#{$c}--disabled) {
-            background-color: mdg($theme, "backgrounds", "default", "primary");
-          }
-        }
       }
     }
   }
