@@ -37,9 +37,9 @@ button(
 
   base-spinner(
     v-if="loading"
+    :color="spinnerColor"
     :size="spinnerSize"
     class="gb-social-button__spinner"
-    color="black"
   )
 </template>
 
@@ -175,6 +175,13 @@ export default {
       default: "default",
       validator(x) {
         return ["nano", "micro", "mini", "small", "default", "medium", "large"].includes(x)
+      }
+    },
+    spinnerColor: {
+      type: String,
+      default: "black",
+      validator(x) {
+        return ["black", "blue", "green", "grey", "orange", "purple", "red", "turquoise", "white", "yellow"].includes(x)
       }
     }
   },
