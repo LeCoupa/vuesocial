@@ -1,12 +1,12 @@
 {
   "exclude": [".git/**", "node_modules/**", "bower_components/**"],
-  "always-semicolon": true,
+  "always-semicolon": true,j vgj vbj vj v
   "block-indent": "  ",
   "color-case": "upper",
   "color-shorthand": false,
   "element-case": "lower",
   "eof-newline": true,
-  "leading-zero": true,
+  "leading-zero": true,just earning gi
   "quotes": "double",
   "remove-empty-rulesets": true,
   "sort-order-fallback": "abc",
